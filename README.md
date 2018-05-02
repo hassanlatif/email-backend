@@ -13,10 +13,10 @@
     * [Request format](#request-format)
     * [Response format](#response-format)
 * [Online test access](#demo)
-* [To-do](#todo)
+* [To-do](#to-do)
 
 ## Problem
-To create a backend service that accepts the necessary information and sends emails. The application should provide an abstraction between two different email service providers. If one goes down, the backend service should failover to a different provider without affecting the customers. The solution should cater for multiple email recipients, CCs and BCCs. The backend should be implemented as one or more RESTful API calls.
+To create a RESTful backend service that accepts the necessary information and sends emails. The application should provide an abstraction between two different email service providers. If one goes down, the backend service should failover to a different provider without affecting the customers. The solution should cater for multiple email recipients, CCs and BCCs. 
 
 ## Solution
 ### Architecture
@@ -57,7 +57,7 @@ Since the application is inherently a delegate/proxy service there aren't any Qo
 #### Control of Service
 The application is dependent on external service providers (which are mail servers) for the processing, queuing and delivery of the emails, and hence has effectively little to no control over the processing and delivery pipeline. 
 #### Data Loss
-Due to the above mentioned lack of control and QoS there are multiple points of possible data loss. The application relies on the "reputation" of the external mail servers which maybe be blocked by organizations of interest to the user of the application. Moreover, the application doesn't provide a method to retain the emails content once they are sent, and there is no mechanism to receive confirmation about the delivery of the email.
+Due to the above mentioned lack of control and QoS there are multiple points of possible data loss. The application relies on the "reputation" of the external mail servers which maybe be blocked by organizations of interest to the user of the application. Moreover, the application doesn't provide a method to retain the email content once it is sent, and there is no mechanism to receive confirmation about the delivery of the email or to identify failure of delivery if the address was incorrect.
 ### Tools and libraries
 The application is developed with the Java programming language. The two external libraries used are open source namely [JSON in Java](https://github.com/stleary/JSON-java) for JSON processing and [Jersey Web service framework](https://jersey.github.io/) for creating the RESTful API service. Maven is the build and dependency management tool.
 ## Deployment instructions
@@ -201,3 +201,8 @@ A sample response is as follows:
     "details": "Email send request was successful.",
 }
 ```
+## To-do
+
+ - Adding a logging utility such as log4j - Currently using standard output and error which is supported by AWS CloudWatch but has formatting issues.
+ - Adding a RESTful testing framework such as Jersey testing framework for RESTful endpoint testing
+ -  
