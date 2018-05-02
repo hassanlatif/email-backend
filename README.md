@@ -63,7 +63,7 @@ Due to the above mentioned lack of control and QoS there are multiple points of 
 The application is developed with the Java programming language. The two external libraries used are both open source, namely [JSON in Java](https://github.com/stleary/JSON-java) for JSON processing and [Jersey Web service framework](https://jersey.github.io/) for creating the RESTful API service. Maven is the choice of build and dependency management tool.
 ## Deployment instructions
 ### Deploying to local machine
-The [AWS SAM Local](https://github.com/awslabs/aws-sam-local)  can be used to run the service on a local machine. For SAM Local to work,   [Docker](https://www.docker.com/get-docker)  (community or enterprise) needs to be installed and running on the local machine. Below steps cane be followed to run the service locally:
+The [AWS SAM Local](https://github.com/awslabs/aws-sam-local)  can be used to run the service on a local machine. For SAM Local to work,   [Docker](https://www.docker.com/get-docker)  (community or enterprise) needs to be installed and running on the local machine. Please follow the steps below to run the service locally:
 
 1. Download and install [Docker](https://www.docker.com/get-docker)
 2. Install SAM Local:
@@ -93,7 +93,7 @@ The [API request format](#request-format) is given below.
 
 
 ### Deploying to AWS
-The [AWS CLI](https://aws.amazon.com/cli/) can be used to deploy the application to AWS Lambda and Amazon API Gateway. Below are the steps to deploy the application on AWS.
+The [AWS CLI](https://aws.amazon.com/cli/) can be used to deploy the application to AWS Lambda and Amazon API Gateway. Please follow the below steps to deploy the application on AWS.
 
 1. Clone or download the code.
 2. Using an editor, open the file /email-backend/src/main/resources/emailservices.xml and add your API Keys and URLs for SendGrid and MailGun API services
