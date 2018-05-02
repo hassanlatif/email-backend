@@ -1,4 +1,5 @@
 
+
 ## Table of Contents
 * [Problem](#problem)
 * [Solution ](#solution)
@@ -25,7 +26,7 @@ The following diagram illustrates the high-level architecture of the solution.
 
 ### Design choices and patterns
 #### Chain-of-responsibility pattern for provider failover 
-The failover mechanism is implemented using the chain-of-responsibility design pattern. The pattern is used to create a chain of responsibility between the service providers, so that if one provider fails the responsibility is shifted to the other provider. Therefore, instead of using if-then-else statement the providers arrange themselves in a chain to handle failover. Moreover, the pattern promotes loose coupling and provides a graceful mechanism to add more providers in the future. The implemented pattern is illustrated in the UML diagram below.
+The failover mechanism is implemented using the Chain-of-responsibility design pattern. The pattern is used to create a chain of responsibility between the service providers, so that if one provider fails the responsibility is shifted to the other provider. Therefore, instead of using if-then-else statement the providers arrange themselves in a chain to handle failover. Moreover, the pattern promotes loose coupling and provides a graceful mechanism to add more providers in the future. The implemented pattern is illustrated in the UML diagram below.
 
 ![Chain-of-responsibility pattern](https://raw.githubusercontent.com/hassanlatif/email-backend/master/images/UML-CoR.png)
 #### Visitor pattern (simplified) for parameters validation
@@ -46,23 +47,23 @@ public static void validateEmail(Email email) throws InvalidParameterException {
     }
 }
 ```
-The pattern also makes the code more manageable as more validators can be easily added in the future. The following UML diagram illustrates the implemented pattern.
+The Visitor pattern also makes the code more manageable as more validators can be easily added in the future. The following UML diagram illustrates the implemented pattern.
 
 ![Visitor pattern](https://raw.githubusercontent.com/hassanlatif/email-backend/master/images/UML-Visitor.png)
 #### Custom Exceptions
-To maintain a clear separate and traceability of exceptions, two custom exception have been added namely InvalidParameterException and ServiceProviderException for client side exceptions and server side exceptions respectively.
+To maintain a clear separation and have traceability of exceptions, two custom exception have been added namely InvalidParameterException and ServiceProviderException for client side exceptions and server side exceptions respectively.
 ### Constraints
 #### Quality of Service (QoS)
 Since the application is inherently a delegate/proxy service there aren't any QoS levels in place to provide guarantee for the delivery of the email. The application only delegates the requests and responses to the concerned parties.
 #### Control of Service
 The application is dependent on external service providers (which are mail servers) for the processing, queuing and delivery of the emails, and hence has effectively little to no control over the processing and delivery pipeline. 
 #### Data Loss
-Due to the above mentioned lack of control and QoS there are multiple points of possible data loss. The application relies on the "reputation" of the external mail servers which maybe be blocked by organizations of interest to the user of the application. Moreover, the application doesn't provide a method to retain the email content once it is sent, and there is no mechanism to receive confirmation about the delivery of the email or to identify failure of delivery if the address was incorrect.
+Due to the above mentioned lack of control and QoS there are multiple points of possible data loss. The application relies on the "reputation" of the external mail servers which maybe be blocked by organizations of interest to the user of the application due to strict filtering policies. Moreover, the application doesn't provide a method to retain the email content once it is sent, and there is no mechanism to receive confirmation about the delivery of the email or to identify failure of delivery if the address was incorrect.
 ### Tools and libraries
-The application is developed with the Java programming language. The two external libraries used are open source namely [JSON in Java](https://github.com/stleary/JSON-java) for JSON processing and [Jersey Web service framework](https://jersey.github.io/) for creating the RESTful API service. Maven is the build and dependency management tool.
+The application is developed with the Java programming language. The two external libraries used are both open source, namely [JSON in Java](https://github.com/stleary/JSON-java) for JSON processing and [Jersey Web service framework](https://jersey.github.io/) for creating the RESTful API service. Maven is the choice of build and dependency management tool.
 ## Deployment instructions
 ### Deploying to local machine
-The [AWS SAM Local](https://github.com/awslabs/aws-sam-local)  can be used to run the service on a local machine. For SAM Local to work,   [Docker](https://www.docker.com/get-docker)  (community or enterprise) needs to be installed and running on the local machine. Follow the steps below to run the service locally:
+The [AWS SAM Local](https://github.com/awslabs/aws-sam-local)  can be used to run the service on a local machine. For SAM Local to work,   [Docker](https://www.docker.com/get-docker)  (community or enterprise) needs to be installed and running on the local machine. Below steps cane be followed to run the service locally:
 
 1. Download and install [Docker](https://www.docker.com/get-docker)
 2. Install SAM Local:
@@ -88,7 +89,7 @@ We now have a local emulator of API Gateway and Lambda up and running. Using an 
 http://127.0.0.1:3000/email/send
 ```
 
-The [API request format](#api-request-format) is given below.
+The [API request format](#request-format) is given below.
 
 
 ### Deploying to AWS
@@ -130,7 +131,7 @@ $ aws cloudformation describe-stacks --stack-name ServerlessJerseyApi --query 'S
 ]
 ```
 
-Copy the  `OutputValue`  into an API development environment such as [Postman](https://www.getpostman.com/) to test your first request. The [API request format](#api-request-format) is given below.
+Copy the  `OutputValue`  into an API development environment such as [Postman](https://www.getpostman.com/) to test your first request. The [API request format](#request-format) is given below.
 
 ## Calling the API
 ### Request format 
