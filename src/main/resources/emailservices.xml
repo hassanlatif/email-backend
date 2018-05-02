@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+    <comment>Email Services URLs and APIs</comment>
+    <entry key="sendGridAPIURL">https://api.sendgrid.com/v3/mail/send</entry>
+    <entry key="sendGridAPIKey"><!-- Your SendGrid API Key --></entry>
+    <entry key="MailGunAPIURL"><!-- Your MailGun Domain URL --></entry>
+    <entry key="MailGunAPIKey"><!--  Your MailGun API Key --></entry>
+</properties>
+
