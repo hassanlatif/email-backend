@@ -102,7 +102,7 @@ The [AWS CLI](https://aws.amazon.com/cli/) can be used to deploy the application
 $ cd myworkspace/email-backend
 $ mvn clean package
 ```
-4. You will need create an S3 bucket to store the artifacts for deployment. Once you have created the S3 bucket, run the following command from the project’s root folder – where the  `sam.yaml`file is located:
+4. You will need to create an S3 bucket to store the artifacts for deployment. Once you have created the S3 bucket, run the following command from the project’s root folder – where the  `sam.yaml`file is located:
 ```bash
 $ aws cloudformation package --template-file sam.yaml --output-template-file output-sam.yaml --s3-bucket <YOUR S3 BUCKET NAME>
 Uploading to xxxxxxxxxxxxxxxxxxxxxxxxxx  6464692 / 6464692.0  (100.00%)
@@ -131,7 +131,7 @@ $ aws cloudformation describe-stacks --stack-name ServerlessJerseyApi --query 'S
 ]
 ```
 
-Copy the  `OutputValue`  into an API development environment such as [Postman](https://www.getpostman.com/) to test your first request. The [API request format](#request-format) is given below.
+Copy the  `Endpoint`  into an API development environment such as [Postman](https://www.getpostman.com/) to test your first request. The [API request format](#request-format) is given below.
 
 ## Calling the API
 ### Request format 
@@ -191,7 +191,7 @@ The returned response is a JSON content-type with the following three fields:
 |-|-|-|
 | code | Status code returned from the server  |
 | message | Status message returned from the server  | 
-| details | more details and possibly actions required by the user to remove error 
+| details | more details and possibly actions required by the user to correct the error 
 
 Theres status codes are currently limited to the following three types:
 
