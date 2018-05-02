@@ -70,8 +70,8 @@ The [AWS SAM Local](https://github.com/awslabs/aws-sam-local)  can be used to ru
 $ npm install -g aws-sam-local
 ```
 3. Clone or download the code.
-4. Open the file /email-backend/src/main/resources/emailservices.xml with an editor and add your API Keys and URLs for SendGrid and MailGun API services
-5. Next, using a terminal, open the project root folder and build the jar file.
+4. Using an editor, open the file /email-backend/src/main/resources/emailservices.xml and add your API Keys and URLs for SendGrid and MailGun API services
+5. Using a terminal, open the project root folder and build the jar file.
 ```bash
 $ cd myworkspace/email-backend
 $ mvn clean package
@@ -83,7 +83,7 @@ $ sam local start-api --template sam.yaml
 Mounting com.sapessi.jersey.StreamLambdaHandler::handleRequest (java8) at http://127.0.0.1:3000/{proxy+} [OPTIONS GET HEAD POST PUT DELETE PATCH]
 ...
 ```
-We now have a local emulator of API Gateway and Lambda up and running. Using an API development environment such as [Postman](https://www.getpostman.com/), you can send a test request on the following URL.
+We now have a local emulator of API Gateway and Lambda up and running. Using an API development environment such as [Postman](https://www.getpostman.com/), you can send a test request to the following URL.
 ```bash
 http://127.0.0.1:3000/email/send
 ```
@@ -93,18 +93,26 @@ The [API request format](#api-request-format) is given below.
 
 ### Deploying to AWS
 The [AWS CLI](https://aws.amazon.com/cli/) can be used to deploy the application to AWS Lambda and Amazon API Gateway. Below are the steps to deploy the application on AWS.
-1. You will need an S3 bucket to store the artifacts for deployment. Once you have created the S3 bucket, run the following command from the project’s root folder – where the  `sam.yaml`file is located:
+
+1. Clone or download the code.
+2. Using an editor, open the file /email-backend/src/main/resources/emailservices.xml and add your API Keys and URLs for SendGrid and MailGun API services
+3. Using a terminal, open the project root folder and build the jar file.
+```bash
+$ cd myworkspace/email-backend
+$ mvn clean package
+```
+4. You will need create an S3 bucket to store the artifacts for deployment. Once you have created the S3 bucket, run the following command from the project’s root folder – where the  `sam.yaml`file is located:
 ```bash
 $ aws cloudformation package --template-file sam.yaml --output-template-file output-sam.yaml --s3-bucket <YOUR S3 BUCKET NAME>
 Uploading to xxxxxxxxxxxxxxxxxxxxxxxxxx  6464692 / 6464692.0  (100.00%)
 Successfully packaged artifacts and wrote output template to file output-sam.yaml.
 ```
-2. Execute the following command to deploy the packaged template
+5. Execute the following command to deploy the packaged template
 ```bash
 aws cloudformation deploy --template-file /your/path/output-sam.yaml --stack-name <YOUR STACK NAME>
 ```
 
-3. Choose a stack name and run the  `aws cloudformation deploy`  command from the output of the package command.
+6. Choose a stack name and run the  `aws cloudformation deploy`  command from the output of the package command.
 
 ```bash
 $ aws cloudformation deploy --template-file output-sam.yaml --stack-name EmailBackendAPI --capabilities CAPABILITY_IAM
