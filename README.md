@@ -13,7 +13,7 @@
 * [Calling the API](#calling-the-api)
     * [Request format](#request-format)
     * [Response format](#response-format)
-* [Online test access](#demo)
+* [Online test access](#online-test-access)
 * [To-do](#to-do)
 
 ## Problem
@@ -210,8 +210,13 @@ A sample response is as follows:
     "details": "Email send request was successful.",
 }
 ```
+
+## Online test access
+The service is currently deployed on AWS at the following URL and can be tested using an API development environment such as [Postman](https://www.getpostman.com/):
+
+https://5bkse9gp52.execute-api.ap-southeast-2.amazonaws.com/Prod/email/send
+
 ## To-do
 
  - Adding a logging utility such as log4j - Currently using standard output and error which is supported by AWS CloudWatch but has formatting issues.
  - Adding a RESTful testing framework such as Jersey testing framework for RESTful endpoint testing
- -  
