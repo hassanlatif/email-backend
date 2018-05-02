@@ -214,4 +214,3 @@ A sample response is as follows:
 
  - Adding a logging utility such as log4j - Currently using standard output and error which is supported by AWS CloudWatch but has formatting issues.
  - Adding a RESTful testing framework such as Jersey testing framework for RESTful endpoint testing
- -  
