@@ -16,11 +16,14 @@ To create a backend service that accepts the necessary information and sends ema
 
 ## Solution
 ### Architecture
-The following diagram shows the high-level architecture of the solution.
+The following diagram illustrates the high-level architecture of the solution.
+![Email-backend service](https://raw.githubusercontent.com/hassanlatif/email-backend/master/images/Architecture.png)
 
-### Design choices
-#### Chain of Responsibility pattern for failover
-#### Visitor pattern (simplified) for validation
+
+### Design choices/patterns
+#### Chain-of-responsibility pattern for provider failover
+
+#### Visitor pattern (simplified) for parameters validation
 #### Single responsibility principle
 ### Constraints
 ### Tools and libraries
