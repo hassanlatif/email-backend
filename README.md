@@ -214,7 +214,7 @@ A sample response is as follows:
 ## Online test access
 The service is currently deployed on AWS at the following URL and can be tested using an API development environment such as [Postman](https://www.getpostman.com/):
 
-https://5bkse9gp52.execute-api.ap-southeast-2.amazonaws.com/Prod/email/send
+https://0q52zses1i.execute-api.ap-southeast-2.amazonaws.com/Prod/email/send
 
 ## To-do
 
