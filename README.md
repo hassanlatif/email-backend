@@ -27,7 +27,6 @@ The solutions is deployed in AWS as a RESTful web service. It uses [AWS Lambda](
 ### Design choices and patterns
 #### Chain-of-responsibility pattern for provider failover 
 The failover mechanism is implemented using the Chain-of-responsibility design pattern. The pattern is used to create a chain of responsibility between the service providers, so that if one provider fails the responsibility is shifted to the other provider. Therefore, instead of using if-then-else statement the providers arrange themselves in a chain to handle failover. Moreover, the pattern promotes loose coupling and provides a graceful mechanism to add more providers in the future. The implemented pattern is illustrated in the UML diagram below.
-
 ![Chain-of-responsibility pattern](https://raw.githubusercontent.com/hassanlatif/email-backend/master/images/UML-CoR.png)
 #### Visitor pattern (simplified) for parameters validation
 A stripped-down version of the Visitor design pattern is used for validating the email parameters, where the email is the visitor and the validation rules are the visitees. This greatly improves the readability and testability of the code as instead of if-then-else statement each validation rule encapsulates the single responsibility principal. The following code snippet from the application illustrates this:
