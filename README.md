@@ -21,7 +21,7 @@ To create a RESTful backend service that accepts the necessary information and s
 
 ## Solution
 ### Architecture
-The solutions is deployed in AWS. It uses [AWS Lambda](https://aws.amazon.com/lambda/) and [Amazon API Gateway](https://aws.amazon.com/api-gateway/) as the HTTP frontend and compute platform. The application is developed in Java and uses the [AWS serverless Java container](https://github.com/awslabs/aws-serverless-java-container) framework to run the application inside AWS Lambda. The following diagram illustrates the high-level architecture of the solution. The following diagram illustrates the high-level architecture of the solution.
+The solutions is deployed in AWS. It uses [AWS Lambda](https://aws.amazon.com/lambda/) and [Amazon API Gateway](https://aws.amazon.com/api-gateway/) as the HTTP frontend and compute platform. The application is developed in Java and uses the [AWS serverless Java container](https://github.com/awslabs/aws-serverless-java-container) framework to run the application inside AWS Lambda. The following diagram illustrates the high-level architecture of the solution.
 ![Email-backend service](https://raw.githubusercontent.com/hassanlatif/email-backend/master/images/Architecture.png)
 
 ### Design choices and patterns
